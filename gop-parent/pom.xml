@@ -5,12 +5,12 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>${changelist}</version>
-        <relativePath></relativePath>
+        <version>${nisse.file.changelist}</version>
+        <relativePath />
     </parent>
     <groupId>com.xenoamess.gop</groupId>
     <artifactId>gop-parent</artifactId>
-    <version>${revision}</version>
+    <version>${nisse.file.revision}</version>
     <name>gop-parent</name>
     <description>gop-parent</description>
     <packaging>pom</packaging>
@@ -29,9 +29,7 @@
     </scm>
     <properties>
         <java.version>21</java.version>
-        <changelist>3.5.6</changelist>
         <springboot.version>3.5.6</springboot.version>
-        <revision>0.0.1</revision>
         <native.maven.plugin.version>0.11.0</native.maven.plugin.version>
         <graalpy.version>25.0.0</graalpy.version>
         <antlr.version>3.5.3</antlr.version>
