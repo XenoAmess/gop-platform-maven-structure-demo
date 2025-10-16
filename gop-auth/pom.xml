@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.xenoamess.gop</groupId>
+        <artifactId>gop-parent</artifactId>
+        <version>0.0.1</version>
+        <relativePath></relativePath>
+    </parent>
+    <groupId>com.xenoamess.gop</groupId>
+    <artifactId>gop-auth</artifactId>
+    <version>${revision}</version>
+    <name>gop-auth</name>
+    <description>gop-auth</description>
+    <url/>
+    <licenses>
+        <license/>
+    </licenses>
+    <developers>
+        <developer/>
+    </developers>
+    <scm>
+        <connection/>
+        <developerConnection/>
+        <tag/>
+        <url/>
+    </scm>
+    <properties>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j2-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-to-slf4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-authorization-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp-jvm</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite-commons</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>junit-platform-native</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.4</version>
+                <configuration>
+                    <test>com.xenoamess.gop.gop_auth.GopAuthApplicationTests</test>
+                    <forkCount>1</forkCount>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>native</id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.graalvm.buildtools</groupId>
+                            <artifactId>native-maven-plugin</artifactId>
+                            <version>${native.maven.plugin.version}</version>
+                            <extensions>true</extensions>
+                            <executions>
+                                <execution>
+                                    <id>add-reachability-metadata</id>
+                                    <goals>
+                                        <goal>add-reachability-metadata</goal>
+                                    </goals>
+                                </execution>
+                                <execution>
+                                    <id>native-build</id>
+                                    <goals>
+                                        <goal>compile-no-fork</goal>
+                                    </goals>
+                                    <phase>package</phase>
+                                </execution>
+                                <execution>
+                                    <id>metadata-copy</id>
+                                    <goals>
+                                        <goal>metadata-copy</goal>
+                                    </goals>
+                                    <phase>package</phase>
+                                </execution>
+                                <!--                            <execution>-->
+                                <!--                                <id>native-test</id>-->
+                                <!--                                <goals>-->
+                                <!--                                    <goal>test</goal>-->
+                                <!--                                </goals>-->
+                                <!--                                <phase>test</phase>-->
+                                <!--                            </execution>-->
+                            </executions>
+                            <configuration>
+                                <classesDirectory>${project.build.outputDirectory}</classesDirectory>
+                                <requiredVersion>24</requiredVersion>
+                                <!-- 构建参数配置 -->
+                                <buildArgs>
+                                    <!-- 启用详细构建信息 -->
+                                    <buildArg>-H:+PrintAnalysisCallTree</buildArg>
+                                    <!-- 生成构建报告 -->
+                                    <buildArg>-H:+DashboardAll</buildArg>
+                                    <!-- 报告输出目录 -->
+                                    <buildArg>-H:DashboardDump=${project.build.directory}/native-reports</buildArg>
+                                    <!--                                    &lt;!&ndash; 启用代码大小跟踪 &ndash;&gt;-->
+                                    <!--                                    <buildArg>-H:+PrintCodeSize</buildArg>-->
+                                    <!-- 启用堆大小跟踪 -->
+                                    <buildArg>-H:+PrintHeapHistogram</buildArg>
+                                    <!-- 启用特性报告 -->
+                                    <buildArg>-H:+PrintFeatures</buildArg>
+                                    <buildArg>-H:+RemoveUnusedSymbols</buildArg>
+                                    <!--                                    <buildArg>&#45;&#45;initialize-at-build-time=io.jstach.rainbowgum.jdk.systemlogger.SystemLoggingFactory</buildArg>-->
+                                    <!--                                    &lt;!&ndash; 启用统计信息 &ndash;&gt;-->
+                                    <!--                                    <buildArg>-H:+PrintPointsToStatistics</buildArg>-->
+                                    <!--                                    <buildArg>-H:+PrintAnalysisStatistics</buildArg>-->
+                                    <!--                                    &lt;!&ndash; 生成可读的构建报告 &ndash;&gt;-->
+                                    <!--                                    <buildArg>-H:+PrintImageElementSizes</buildArg>-->
+                                    <!--&lt;!&ndash;                                    &lt;!&ndash; 启用详细的包含/排除信息 &ndash;&gt;&ndash;&gt;-->
+                                    <!--&lt;!&ndash;                                    <buildArg>-H:+TraceClassInitialization</buildArg>&ndash;&gt;-->
+                                    <!--                                    &lt;!&ndash; 生成大小分析报告 &ndash;&gt;-->
+                                    <!--                                    <buildArg>-H:+PrintImageObjectTree</buildArg>-->
+                                    <!--                                    &lt;!&ndash; 启用方法调用树分析 &ndash;&gt;-->
+                                    <!--                                    <buildArg>-H:+PrintMethodHistogram</buildArg>-->
+                                </buildArgs>
+                                <agent>
+                                    <enabled>true</enabled>
+                                    <defaultMode>Standard</defaultMode>
+                                    <modes>
+                                        <direct>config-output-dir=${project.build.directory}/native/agent-output
+                                        </direct>
+                                    </modes>
+                                    <options>
+                                        <builtinCallerFilter>true</builtinCallerFilter>
+                                        <builtinHeuristicFilter>true</builtinHeuristicFilter>
+                                        <enableExperimentalPredefinedClasses>true</enableExperimentalPredefinedClasses>
+                                        <enableExperimentalUnsafeAllocationTracing>true
+                                        </enableExperimentalUnsafeAllocationTracing>
+                                        <trackReflectionMetadata>true</trackReflectionMetadata>
+                                        <accessFilterFiles>
+                                            <filterFile>
+                                                ${project.basedir}/src/main/resources/META-INF/native-image/com.xenoamess.gop/gop.common.manual/access-filter-file.json
+                                            </filterFile>
+                                        </accessFilterFiles>
+                                    </options>
+                                    <metadataCopy>
+                                        <disabledStages>
+                                            <stage>main</stage>
+                                        </disabledStages>
+                                        <merge>true</merge>
+                                        <outputDirectory>
+                                            ${project.basedir}/src/main/resources/META-INF/native-image/com.xenoamess.gop/gop.common.auto
+                                        </outputDirectory>
+                                    </metadataCopy>
+                                </agent>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+                <plugins>
+                    <plugin>
+                        <groupId>org.graalvm.buildtools</groupId>
+                        <artifactId>native-maven-plugin</artifactId>
+                        <version>${native.maven.plugin.version}</version>
+                        <extensions>true</extensions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
